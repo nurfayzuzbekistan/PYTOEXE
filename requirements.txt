@@ -1,0 +1,27 @@
+import os
+import subprocess
+import sys
+
+
+def main() -> None:
+    project_name = 'HTMLApp'
+    command = [
+        sys.executable,
+        '-m',
+        'PyInstaller',
+        '--onefile',
+        '--windowed',
+        '--name',
+        project_name,
+        '--add-data',
+        'index.html:.',
+        'app.py',
+    ]
+
+    print('Building EXE...')
+    subprocess.run(command, check=True)
+    print(f'Created: dist/{project_name}.exe')
+
+
+if __name__ == '__main__':
+    main()
